@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Post;
+
 class PagesController extends Controller {
 
 
@@ -12,7 +14,9 @@ class PagesController extends Controller {
         #compile or process data from the model if needed
         #pass that data to the correct view
 
-        return view('pages.welcome');
+        $posts = Post::orderby('created_at', 'desc')->limit(5)->get();
+
+        return view('pages.welcome')->withPosts($posts);
     }
 
     public function getAbout(){
@@ -27,14 +31,13 @@ class PagesController extends Controller {
 
 
         //return view('pages.about')->with('fullname' ,$fullname);
-         //return view('pages.about')->withFullname($fullname)->withEmail($email);
+        //return view('pages.about')->withFullname($fullname)->withEmail($email);
         return view('pages.about')->withData($data);
     }
 
     public function getContact(){
         return view('pages.contact');
     }
-
 
 
 }

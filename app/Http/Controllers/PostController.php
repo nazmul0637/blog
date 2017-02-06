@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Post;
+use Barryvdh\DomPDF\PDF;
 
 class PostController extends Controller
 {
@@ -14,7 +15,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts=Post::all();
+        $posts = Post::orderby('id', 'desc')->paginate(10);
         return view('posts.index')->withPosts($posts);
     }
 
@@ -111,4 +112,5 @@ class PostController extends Controller
         $post->delete();
         return redirect()->route('posts.index');
     }
+
 }
