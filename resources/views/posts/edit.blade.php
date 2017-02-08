@@ -9,8 +9,11 @@
             {!! Form::label('title','Title:') !!}
             {{Form::text('title',null, ["class"=>'form-control input-lg'])}}
 
+            {!! Form::label('slug','Slug:') !!}
+            {{Form::text('slug',null, ["class"=>'form-control form-spacing-top'])}}
+
             {!! Form::label('body','Body:') !!}
-            {{Form::textarea('body',null,['class'=>'form-control'])}}
+            {{Form::textarea('body',null,['class'=>'form-control form-spacing-top'])}}
         </div>
         <div class="col-md-4">
             <div class="well">

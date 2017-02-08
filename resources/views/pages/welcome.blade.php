@@ -17,7 +17,7 @@
             @foreach($posts as $post)
             <div class="post">
                 <h3>{{$post->title}}</h3>
-                <p>{{$post->body}}</p>
+                <p>{{substr($post->body,0,300)}}{{strlen($post->body) > 300 ?"..." :""}}</p>
                 <a href="#" class="btn btn-primary">Read More</a>
                 {{--{{route('pages.single',$post->id)}}--}}
             </div>

@@ -13,6 +13,10 @@
                 <div class="col-md-4">
                     <div class="well">
                         <dl class="dl-horizontal">
+                            <dt>Url Slug:</dt>
+                            <dd><a href="{{url($post->slug)}}">{{url($post->slug)}}</a></dd>
+                        </dl>
+                        <dl class="dl-horizontal">
                             <dt>Create at:</dt>
                             <dd>{{date('M j,Y h:ia',strtotime($post->created_at))}}</dd>
                         </dl>
@@ -40,6 +44,12 @@
                                 {{--{!! Html::linkRoute('posts.destroy','Delete',array($post->id),array('class'=>'btn btn-danger btn-block')) !!}--}}
 
                                 {{--<a href="#" class="btn btn-primary btn-block">Delete</a>--}}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                {{Html::linkRoute('posts.index','<< See All Post',[],['class'=>'btn btn-default btn-block
+                                 btn-h1-spacing'])}}
                             </div>
                         </div>
                     </div>

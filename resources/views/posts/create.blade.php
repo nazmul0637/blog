@@ -16,6 +16,13 @@
                     <input type="text" class="form-control" name="title">
                 </div>
                 <div class="form-group">
+                    {{--{{ Form::label('title','Slug') }}
+                    {{Form::text('slug',null,['class'=>'form-controll','required'=>''])}}--}}
+
+                    <label for="slug">Slug</label>
+                    <input type="text" class="form-control" name="slug">
+                </div>
+                <div class="form-group">
                     <label for="post">Post Body:</label>
                     <textarea class="form-control" rows="5" name="body"></textarea>
                 </div>

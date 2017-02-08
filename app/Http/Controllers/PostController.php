@@ -39,11 +39,13 @@ class PostController extends Controller
     {
         $this->validate($request,array(
             'title'=>'required',
+            'slug' => 'required',
             'body'=>'required'
         ));
 
         $post=new Post();
         $post->title=$request->input('title');
+        $post->slug = $request->input('slug');
         $post->body=$request->input('body');
 
         $post->save();
@@ -87,11 +89,13 @@ class PostController extends Controller
         //validate the data
         $this->validate($request, array(
             'title' => 'required',
+            'slug' => 'required',
             'body' => 'required'
         ));
         //Save data to the database
         $post = Post::find($id);
         $post->title = $request->input('title');
+        $post->slug = $request->input('slug');
         $post->body = $request->input('body');
 
         $post->save();
