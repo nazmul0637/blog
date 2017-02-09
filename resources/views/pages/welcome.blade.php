@@ -6,7 +6,7 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="jumbotron">
-                <h1>Welcom to My Blog!</h1>
+                <h1>Welcome to My Blog!</h1>
                 <p class="lead">Thank you so much for visiting.This is my test website built with Laravel.Please read my popular post!</p>
                 <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>
             </div>
@@ -18,7 +18,7 @@
             <div class="post">
                 <h3>{{$post->title}}</h3>
                 <p>{{substr($post->body,0,300)}}{{strlen($post->body) > 300 ?"..." :""}}</p>
-                <a href="#" class="btn btn-primary">Read More</a>
+                <a href="{{ url('/blog/'.$post->slug) }}" class="btn btn-primary">Read More</a>
                 {{--{{route('pages.single',$post->id)}}--}}
             </div>
 
