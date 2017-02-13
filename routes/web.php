@@ -11,26 +11,35 @@
 |
 */
 
-Route::get('blog/index',['as'=>'blog.index','uses'=>'BlogController@getIndex']);
+Route::group(['middleware' => ['web']], function () {
 
-Route::get('blog/{slug}/', ['as' => 'blog.single', 'uses' => 'BlogController@getSingle'])
-    ->where('slug', '[\w\d\-\_]+');
+    //Authentication Routes
+    Route::get('auth/login', 'Auth\LoginController@getLogin');
+    Route::post('auth/login', 'Auth\LoginController@postLogin');
+    Route::get('auth/logout', 'Auth\LoginController@getLogout');
 
-Route::get('contact', 'PagesController@getContact');
-
-
-Route::get('about', 'PagesController@getAbout');
-
-Route::get('/', 'PagesController@getIndex');
-
-Route::get('posts/pdf', 'PDFController@getPostPdf');
-
-Route::resource('posts','PostController');
-
-Route::post('store','PostController@store');
-Route::get('show/{id}',array('uses' => 'PostController@show', 'as' => 'showPost'));
+    //Registration Routes
+    Route::get('auth/register', 'Auth\RegisterController@getRegister');
+    Route::post('auth/register', 'Auth\RegisterController@postRegister');
 
 
+    Route::get('blog/index', ['as' => 'blog.index', 'uses' => 'BlogController@getIndex']);
+
+    Route::get('blog/{slug}/', ['as' => 'blog.single', 'uses' => 'BlogController@getSingle'])
+        ->where('slug', '[\w\d\-\_]+');
+
+    Route::get('contact', 'PagesController@getContact');
 
 
-//Route::group(['middleware' =>['web']],function (){     // });
+    Route::get('about', 'PagesController@getAbout');
+
+    Route::get('/', 'PagesController@getIndex');
+
+    Route::get('posts/pdf', 'PDFController@getPostPdf');
+
+    Route::resource('posts', 'PostController');
+
+    Route::post('store', 'PostController@store');
+    Route::get('show/{id}', array('uses' => 'PostController@show', 'as' => 'showPost'));
+
+});
