@@ -16,6 +16,7 @@ Route::group(['middleware' => ['web']], function () {
     Route::auth();
 
     Route::get('logout', 'Auth\LoginController@logout');
+    Route::get('reset', 'Auth\ResetPasswordController@reset');
 
 
     Route::get('blog/index', ['as' => 'blog.index', 'uses' => 'BlogController@getIndex']);
